@@ -1,0 +1,11 @@
+Model Information:
+* title:	Boeing 737 American Airlines
+* source:	https://sketchfab.com/3d-models/boeing-737-american-airlines-58a56d6c18864644910889539df4c571
+* author:	United 2.0 (https://sketchfab.com/savounited)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Boeing 737 American Airlines" (https://sketchfab.com/3d-models/boeing-737-american-airlines-58a56d6c18864644910889539df4c571) by United 2.0 (https://sketchfab.com/savounited) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
