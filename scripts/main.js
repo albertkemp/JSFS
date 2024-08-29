@@ -196,6 +196,20 @@ document.addEventListener('keyup', (event) => {
     keyState[event.code] = false;
 });
 
+document.addEventListener('keydown', (event) => {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
+        event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+    }
+    keyState[event.code] = true;
+});
+
+document.addEventListener('keyup', (event) => {
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
+        event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+    }
+    keyState[event.code] = false;
+});
+
 function handleThrottle(event) {
     if (event.code.startsWith('Digit') && event.code !== 'Digit0') {
         throttle = parseInt(event.code.replace('Digit', '')) * 10; // Set throttle to corresponding percentage
