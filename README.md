@@ -63,3 +63,99 @@ Model License:
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
 This work is based on "Low Poly Boeing 787-8" (https://sketchfab.com/3d-models/low-poly-boeing-787-8-7fefde6686b34a6fb83d4bc9cc8d78df) by Oyan3D (https://sketchfab.com/oyan3D) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 
+## A330 Air Canada:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "a330 air canada" (https://sketchfab.com/3d-models/a330-air-canada-1c3c7a20928a4411a6e45d4639c8e7bb) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## A340 Iberia:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "a340 iberia" (https://sketchfab.com/3d-models/a340-iberia-1f9342f33aa2486ba4b1fbd28032f5e4) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## A340-500
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "A340-500 plane" (https://sketchfab.com/3d-models/a340-500-plane-2e5d6f899b784394b22d1e64998f0704) by Greg (https://sketchfab.com/gregoirebonnin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Air new zealand 777:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Air New Zealand Boeing 777 219 ER updated livery" (https://sketchfab.com/3d-models/air-new-zealand-boeing-777-219-er-updated-livery-17050ee33dfb4fe1981cac462893c158) by A Random Modeler (https://sketchfab.com/danielskom111) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## CRJ-900 cityjet:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airplane CRJ-900 Cityjet" (https://sketchfab.com/3d-models/airplane-crj-900-cityjet-02c4fa44604243c2bb48db64506a39af) by CityJet Training (https://sketchfab.com/artoud) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Boeing 717 Delta:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 717 delta" (https://sketchfab.com/3d-models/boeing-717-delta-3e0b85a925f14db19c95909140977b69) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Boeing 717 Hawaiian:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 717 hawaiian airlines" (https://sketchfab.com/3d-models/boeing-717-hawaiian-airlines-16a24b8ebdc248319c0843d36ebcd671) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Boeing 717 QantasLink:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 717 qantaslink" (https://sketchfab.com/3d-models/boeing-717-qantaslink-c64baf4c32984663839640a9500cacd9) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Aeroflot 777:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 777 aeroflot" (https://sketchfab.com/3d-models/boeing-777-aeroflot-32c3ca1705bc4c05b5ea3b9052241491) by mamont nikita (https://sketchfab.com/mamontnikita62) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Korean Air A380:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "korean air  a380" (https://sketchfab.com/3d-models/korean-air-a380-33fa332e130c4138a1011bd7b1de97e2) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Shenyang J31:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Shenyang J31 "Gyrfalcon"" (https://sketchfab.com/3d-models/shenyang-j31-gyrfalcon-23dbff530e21491299ac67bbab42b553) by andertan (https://sketchfab.com/andertan) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
+## Glider:
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "UNDERPOLY: Free Sailplane Glider" (https://sketchfab.com/3d-models/underpoly-free-sailplane-glider-45ffefc38fcf4e76a9d0c2a4e76262ef) by UNDERPOLY Project (https://sketchfab.com/underpolyproject) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
