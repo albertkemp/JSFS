@@ -1,0 +1,11 @@
+Model Information:
+* title:	boeing 717 hawaiian airlines
+* source:	https://sketchfab.com/3d-models/boeing-717-hawaiian-airlines-16a24b8ebdc248319c0843d36ebcd671
+* author:	zairiqzairiq (https://sketchfab.com/zairiqzairiq)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 717 hawaiian airlines" (https://sketchfab.com/3d-models/boeing-717-hawaiian-airlines-16a24b8ebdc248319c0843d36ebcd671) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
