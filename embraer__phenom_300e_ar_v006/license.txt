@@ -1,0 +1,11 @@
+Model Information:
+* title:	Embraer_ Phenom_300E_AR_v006
+* source:	https://sketchfab.com/3d-models/embraer--phenom-300e-ar-v006-8087da16bf3e43f1b79ddb05b91ae246
+* author:	ryan_cd (https://sketchfab.com/ryan_cd)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Embraer_ Phenom_300E_AR_v006" (https://sketchfab.com/3d-models/embraer--phenom-300e-ar-v006-8087da16bf3e43f1b79ddb05b91ae246) by ryan_cd (https://sketchfab.com/ryan_cd) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
