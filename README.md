@@ -58,3 +58,4 @@ Model License:
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
 This work is based on "Low Poly Boeing 787-8" (https://sketchfab.com/3d-models/low-poly-boeing-787-8-7fefde6686b34a6fb83d4bc9cc8d78df) by Oyan3D (https://sketchfab.com/oyan3D) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+
