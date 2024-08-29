@@ -1,0 +1,11 @@
+Model Information:
+* title:	korean air  a380
+* source:	https://sketchfab.com/3d-models/korean-air-a380-33fa332e130c4138a1011bd7b1de97e2
+* author:	zairiqzairiq (https://sketchfab.com/zairiqzairiq)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "korean air  a380" (https://sketchfab.com/3d-models/korean-air-a380-33fa332e130c4138a1011bd7b1de97e2) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
