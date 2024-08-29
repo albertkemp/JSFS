@@ -11,7 +11,6 @@ function changePopup(){
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
-    <p>Click on the AIRCRAFT button to change planes!</p>
     <button onclick="closePopup()">FLY!</button>
     `;
 }
@@ -110,7 +109,9 @@ const planePopup = document.getElementById('planePopup');
 const closeBtn = document.querySelector('.close');
 const planeOptions = document.querySelectorAll('.plane-option');
 const sevenOptions = document.querySelectorAll('.option747');
-
+const sideOptions = document.querySelectorAll('.optionSideways');
+const bigOptions = document.querySelectorAll('.optionBig');
+const smallOptions = document.querySelectorAll('.optionSmall');
 selectPlaneButton.addEventListener('click', () => {
 planePopup.style.display = 'block';
 });
@@ -139,7 +140,27 @@ option.addEventListener('click', (event) => {
     planePopup.style.display = 'none';
 });
 });
-
+sideOptions.forEach(option => {
+option.addEventListener('click', (event) => {
+    const modelPath = event.target.getAttribute('data-model');
+    loadSideways(modelPath);
+    planePopup.style.display = 'none';
+});
+});
+bigOptions.forEach(option => {
+option.addEventListener('click', (event) => {
+    const modelPath = event.target.getAttribute('data-model');
+    loadBig(modelPath);
+    planePopup.style.display = 'none';
+});
+});
+smallOptions.forEach(option => {
+option.addEventListener('click', (event) => {
+    const modelPath = event.target.getAttribute('data-model');
+    loadSmall(modelPath);
+    planePopup.style.display = 'none';
+});
+});
 function loadModel(modelPath) {
 if (model) {
     scene.remove(model);
@@ -150,7 +171,7 @@ loader.load(modelPath, function (gltf) {
     model.rotation.x = 0;
     model.position.z = 25;
     model.position.y = 1;
-    model.scale.set(0.4, 0.4, 0.4);
+    model.scale.set(0.6, 0.6, 0.6);
     scene.add(model);
 }, undefined, function (error) {
     console.error(error);
@@ -172,7 +193,40 @@ loader.load(modelPath, function (gltf) {
     console.error(error);
 });
 }
+function loadBig(modelPath) {
+if (model) {
+    scene.remove(model);
+}
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 1;
+    model.scale.set(0.7, 0.7, 0.7);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
 });
+}
+function loadSmall(modelPath) {
+if (model) {
+    scene.remove(model);
+}
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 1;
+    model.scale.set(0.004, 0.004, 0.004);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
+}
+});
+
 
 
 
@@ -197,17 +251,17 @@ document.addEventListener('keyup', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
-        event.preventDefault(); // Prevent default behavior (e.g., scrolling)
-    }
-    keyState[event.code] = true;
+if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
+event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+}
+keyState[event.code] = true;
 });
 
 document.addEventListener('keyup', (event) => {
-    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
-        event.preventDefault(); // Prevent default behavior (e.g., scrolling)
-    }
-    keyState[event.code] = false;
+if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.code)) {
+event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+}
+keyState[event.code] = false;
 });
 
 function handleThrottle(event) {
