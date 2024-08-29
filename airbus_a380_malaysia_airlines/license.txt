@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airbus A380 Malaysia Airlines
+* source:	https://sketchfab.com/3d-models/airbus-a380-malaysia-airlines-02ecd9fd261e4c4bb7afc3c289de83c9
+* author:	LuizZed36 (https://sketchfab.com/LuizZed36)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airbus A380 Malaysia Airlines" (https://sketchfab.com/3d-models/airbus-a380-malaysia-airlines-02ecd9fd261e4c4bb7afc3c289de83c9) by LuizZed36 (https://sketchfab.com/LuizZed36) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
