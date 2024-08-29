@@ -1,0 +1,11 @@
+Model Information:
+* title:	737 MAX Lion Air
+* source:	https://sketchfab.com/3d-models/737-max-lion-air-2747cad8b4c64122abe992c9ad1e8bd1
+* author:	Oyan3D (https://sketchfab.com/oyan3D)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "737 MAX Lion Air" (https://sketchfab.com/3d-models/737-max-lion-air-2747cad8b4c64122abe992c9ad1e8bd1) by Oyan3D (https://sketchfab.com/oyan3D) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
