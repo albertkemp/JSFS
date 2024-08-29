@@ -1,0 +1,11 @@
+Model Information:
+* title:	boeing 717 delta
+* source:	https://sketchfab.com/3d-models/boeing-717-delta-3e0b85a925f14db19c95909140977b69
+* author:	zairiqzairiq (https://sketchfab.com/zairiqzairiq)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "boeing 717 delta" (https://sketchfab.com/3d-models/boeing-717-delta-3e0b85a925f14db19c95909140977b69) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
