@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airbus A380 HiFly
+* source:	https://sketchfab.com/3d-models/airbus-a380-hifly-52a29afd8765410c898387bff0b5c517
+* author:	thithtooeain2942002 (https://sketchfab.com/eainthithtoo620)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airbus A380 HiFly" (https://sketchfab.com/3d-models/airbus-a380-hifly-52a29afd8765410c898387bff0b5c517) by thithtooeain2942002 (https://sketchfab.com/eainthithtoo620) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
