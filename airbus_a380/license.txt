@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airbus A380
+* source:	https://sketchfab.com/3d-models/airbus-a380-21a5de23596945c8b2f6ddc7c6dc41e0
+* author:	JUSTGAME (https://sketchfab.com/ayapenid)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airbus A380" (https://sketchfab.com/3d-models/airbus-a380-21a5de23596945c8b2f6ddc7c6dc41e0) by JUSTGAME (https://sketchfab.com/ayapenid) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
