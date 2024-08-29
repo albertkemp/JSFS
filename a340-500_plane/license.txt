@@ -1,0 +1,11 @@
+Model Information:
+* title:	A340-500 plane
+* source:	https://sketchfab.com/3d-models/a340-500-plane-2e5d6f899b784394b22d1e64998f0704
+* author:	Greg (https://sketchfab.com/gregoirebonnin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "A340-500 plane" (https://sketchfab.com/3d-models/a340-500-plane-2e5d6f899b784394b22d1e64998f0704) by Greg (https://sketchfab.com/gregoirebonnin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
