@@ -1,0 +1,11 @@
+Model Information:
+* title:	UNDERPOLY: Free Sailplane Glider
+* source:	https://sketchfab.com/3d-models/underpoly-free-sailplane-glider-45ffefc38fcf4e76a9d0c2a4e76262ef
+* author:	UNDERPOLY Project (https://sketchfab.com/underpolyproject)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "UNDERPOLY: Free Sailplane Glider" (https://sketchfab.com/3d-models/underpoly-free-sailplane-glider-45ffefc38fcf4e76a9d0c2a4e76262ef) by UNDERPOLY Project (https://sketchfab.com/underpolyproject) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
