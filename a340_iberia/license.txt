@@ -1,0 +1,11 @@
+Model Information:
+* title:	a340 iberia
+* source:	https://sketchfab.com/3d-models/a340-iberia-1f9342f33aa2486ba4b1fbd28032f5e4
+* author:	zairiqzairiq (https://sketchfab.com/zairiqzairiq)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "a340 iberia" (https://sketchfab.com/3d-models/a340-iberia-1f9342f33aa2486ba4b1fbd28032f5e4) by zairiqzairiq (https://sketchfab.com/zairiqzairiq) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
