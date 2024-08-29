@@ -11,6 +11,7 @@ function changePopup(){
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
+    <p>Click on the AIRCRAFT button to change planes!</p>
     <button onclick="closePopup()">FLY!</button>
     `;
 }
