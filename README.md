@@ -1,4 +1,5 @@
-<img width="1080" alt="Screenshot 2024-08-29 at 9 51 37 am" src="https://github.com/user-attachments/assets/9aae4adf-8c70-4f7a-84b7-4ba0a0d0c4a3">
+<img width="400" alt="Screenshot 2024-08-29 at 9 51 37 am" src="https://github.com/user-attachments/assets/9aae4adf-8c70-4f7a-84b7-4ba0a0d0c4a3">
+A380 in image above credit to JUSTGAME (https://sketchfab.com/ayapenid), license below in Credits
 
 # JSFS
 
