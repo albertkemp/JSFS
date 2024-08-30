@@ -286,10 +286,10 @@ function updateModelRotation() {
         if (keyState['ArrowDown']) {
             model.rotation.x += controlsSpeed; // Pitch down
         }
-        if (keyState[',']) {
+        if (keyState['Comma']) {
             model.rotation.y += controlsSpeed; // Yaw left
         }
-        if (keyState['.']) {
+        if (keyState['Period']) {
             model.rotation.y -= controlsSpeed; // Yaw right
         }
         // Apply throttle to move the model forward along the z-axis
