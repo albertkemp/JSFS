@@ -275,11 +275,9 @@ function handleThrottle(event) {
 function updateModelRotation() {
     if (model) {
         if (keyState['ArrowLeft']) {
-            model.rotation.y += controlsSpeed; // Yaw right
             model.rotation.z -= controlsSpeed; // Roll left
         }
         if (keyState['ArrowRight']) {
-            model.rotation.y -= controlsSpeed; // Yaw left
             model.rotation.z += controlsSpeed; // Roll right
         }
         if (keyState['ArrowUp']) {
@@ -287,6 +285,12 @@ function updateModelRotation() {
         }
         if (keyState['ArrowDown']) {
             model.rotation.x += controlsSpeed; // Pitch down
+        }
+        if (keyState[',']) {
+            model.rotation.y += controlsSpeed; // Yaw left
+        }
+        if (keyState['.']) {
+            model.rotation.y -= controlsSpeed; // Yaw right
         }
         // Apply throttle to move the model forward along the z-axis
         model.translateZ(throttle * 0.003); // Move the model forward
