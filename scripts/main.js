@@ -171,7 +171,7 @@ loader.load(modelPath, function (gltf) {
     model.rotation.x = 0;
     model.position.z = 25;
     model.position.y = 1;
-    model.scale.set(0.6, 0.6, 0.6);
+    model.scale.set(0.4, 0.4, 0.4);
     scene.add(model);
 }, undefined, function (error) {
     console.error(error);
