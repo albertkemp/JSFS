@@ -74,7 +74,6 @@ createRunway(0, 0);
 createRunway(-10, 20);
 
 let model;
-model = gltf.scene;
 let throttle = 0; // Initialize throttle at 0%
 const cameraOffset = new THREE.Vector3(0, 3, 10); // Offset for the camera relative to the model
 
