@@ -4,7 +4,6 @@ if(localStorage.getItem("popupShown")!="true"){
 var popupContent = document.getElementById("popup-content");
 function changePopup(){
     popupContent.innerHTML=`
-    <button id="close">&times;</button>
     <h1>Some instructions before takeoff</h1>
     <h2>Controls:</h2>
     <p>Left and right arrow to roll and yaw left and right</p>
