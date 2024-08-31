@@ -107,7 +107,7 @@ loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (g
 document.addEventListener('DOMContentLoaded', () => {
 const selectPlaneButton = document.getElementById('selectPlaneButton');
 const planePopup = document.getElementById('planePopup');
-const closeBtn = document.querySelector('.close');
+//const closeBtn = document.querySelector('.close');
 const planeOptions = document.querySelectorAll('.plane-option');
 const sevenOptions = document.querySelectorAll('.option747');
 const sideOptions = document.querySelectorAll('.optionSideways');
@@ -116,10 +116,10 @@ const smallOptions = document.querySelectorAll('.optionSmall');
 selectPlaneButton.addEventListener('click', () => {
 planePopup.style.display = 'block';
 });
-
+/*
 closeBtn.addEventListener('click', () => {
 planePopup.style.display = 'none';
-});
+});*/
 
 window.addEventListener('click', (event) => {
 if (event.target == planePopup) {
