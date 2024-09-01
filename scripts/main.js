@@ -105,7 +105,7 @@ loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (g
 document.addEventListener('DOMContentLoaded', () => {
 const selectPlaneButton = document.getElementById('selectPlaneButton');
 const planePopup = document.getElementById('planePopup');
-//const closeBtn = document.querySelector('.close');
+const closeBtn = document.querySelector('.close');
 const planeOptions = document.querySelectorAll('.plane-option');
 const sevenOptions = document.querySelectorAll('.option747');
 const sideOptions = document.querySelectorAll('.optionSideways');
