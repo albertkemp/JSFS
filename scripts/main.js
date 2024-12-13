@@ -279,10 +279,10 @@ function updateModelRotation() {
         if (keyState['ArrowRight']&& model.y>0) {
             model.rotation.z += controlsSpeed; // Roll right
         }
-        if (keyState['ArrowUp']&& model.y>0) {
+        if (keyState['ArrowUp']) {
             model.rotation.x -= controlsSpeed; // Pitch up
         }
-        if (keyState['ArrowDown']&& model.y>0) {
+        if (keyState['ArrowDown']) {
             model.rotation.x += controlsSpeed; // Pitch down
         }
         if (keyState['Comma']) {
