@@ -272,17 +272,17 @@ function handleThrottle(event) {
 }
 
 function updateModelRotation() {
-    if (model && model.y>0) {
-        if (keyState['ArrowLeft']) {
+    if (model && throttle>0) {
+        if (keyState['ArrowLeft'] && model.y>0) {
             model.rotation.z -= controlsSpeed; // Roll left
         }
-        if (keyState['ArrowRight']) {
+        if (keyState['ArrowRight']&& model.y>0) {
             model.rotation.z += controlsSpeed; // Roll right
         }
-        if (keyState['ArrowUp']) {
+        if (keyState['ArrowUp']&& model.y>0) {
             model.rotation.x -= controlsSpeed; // Pitch up
         }
-        if (keyState['ArrowDown']) {
+        if (keyState['ArrowDown']&& model.y>0) {
             model.rotation.x += controlsSpeed; // Pitch down
         }
         if (keyState['Comma']) {
