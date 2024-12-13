@@ -96,7 +96,7 @@ loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (g
     model.rotation.y = Math.PI / 1;  // 90 degrees yaw
     model.rotation.x = 0;
     model.position.z = 25;
-    model.position.y=1;
+    model.position.y=0;
     model.scale.set(0.4, 0.4, 0.4);
     scene.add(model);
 }, undefined, function (error) {
@@ -272,7 +272,7 @@ function handleThrottle(event) {
 }
 
 function updateModelRotation() {
-    if (model) {
+    if (model && model.y>0) {
         if (keyState['ArrowLeft']) {
             model.rotation.z -= controlsSpeed; // Roll left
         }
