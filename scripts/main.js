@@ -273,10 +273,10 @@ function handleThrottle(event) {
 
 function updateModelRotation() {
     if (model && throttle>0) {
-        if (keyState['ArrowLeft'] && model.y>0) {
+        if (keyState['ArrowLeft']) {
             model.rotation.z -= controlsSpeed; // Roll left
         }
-        if (keyState['ArrowRight']&& model.y>0) {
+        if (keyState['ArrowRight']) {
             model.rotation.z += controlsSpeed; // Roll right
         }
         if (keyState['ArrowUp']) {
