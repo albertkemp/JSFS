@@ -114,10 +114,10 @@ const smallOptions = document.querySelectorAll('.optionSmall');
 selectPlaneButton.addEventListener('click', () => {
 planePopup.style.display = 'block';
 });
-/*
+
 closeBtn.addEventListener('click', () => {
 planePopup.style.display = 'none';
-});*/
+});
 
 window.addEventListener('click', (event) => {
 if (event.target == planePopup) {
