@@ -125,3 +125,6 @@ background-color: #818181;
         position:absolute;
         width:100%;
     }
+    .tsbut{
+        border:none;background-color: #00000000;font-size:20px;color:#000;
+    }

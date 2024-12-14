@@ -1,21 +1,32 @@
-if(localStorage.getItem("popupShown")!="true"){
+/*if(localStorage.getItem("popupShown")!="true"){
     document.getElementById("popup").style.display="block";
-}
+}*/
+
 var popupContent = document.getElementById("popup-content");
-function changePopup(){
-    popupContent.innerHTML=`
-    <h1>Some instructions before takeoff</h1>
+function changePopup(content){
+    popupContent.innerHTML=content;
+}
+var instructionButton = document.getElementById("instructionButton");
+instructionButton.addEventListener("click", function(){
+    changePopup(`<h1>Some instructions before takeoff</h1>
     <h2>Controls:</h2>
     <p>Left and right arrow to roll and yaw left and right</p>
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
-    <button onclick="closePopup()">FLY!</button>
-    `;
-}
+    <button onclick="closePopup()">FLY!</button>`);
+    openPopup();
+});
+var creditButton = document.getElementById("creditButton");
+creditButton.addEventListener("click", function(){
+    changePopup(`<h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><button onclick="window.location.href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</button>`);
+    openPopup();
+});
 function closePopup(){
     document.getElementById("popup").style.display="none";
-    localStorage.setItem("popupShown", "true");
+}
+function openPopup(){
+    document.getElementById("popup").style.display="block";
 }
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);

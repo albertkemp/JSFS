@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <div id="bottomBar"><button id="selectPlaneButton" style="border:none;background-color: #00000000;font-size:20px;color:#000;">AIRCRAFT</button></div>
+    <div id="bottomBar"><button id="selectPlaneButton" class="tsbut">AIRCRAFT</button><button id="instructionButton" class="tsbut">INSTRUCTIONS</button><button id="creditButton" class="tsbut">CREDITS</button></div>
     
 <div id="popup">
     <div id="popup-content">
     <h1>JSFS 3D Flight simulator</h1>
     <h2>NOTE: This flight simulator is <b>in testing and isn't done yet</b>. Check back later to see better graphics and scenery</h2>
     <h2>Credit: I downloaded these .glTF 3d models from Sketchfab, thanks to all the users that have created them. The 3D models are licensed under creative commons licenses.<button onclick="window.location.href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'">See Credits</button></h2>
-    <button onclick="changePopup()">START</button>
+    <button onclick="changePopup(`<h1>Some instructions before takeoff</h1><h2>Controls:</h2><p>Left and right arrow to roll and yaw left and right</p><p>Keys 0-9 for throttle</p><p>Up and down arrow to pitch up and down</p><p>Click and drag to rotate, and scroll to zoom</p>
+        <button onclick="closePopup()">FLY!</button>`)">START</button>
     </div>
 </div>
 <div id="crashMessage" style="display:none;">
@@ -27,42 +28,42 @@
 <div id="planePopup" class="popup">
     <div class="popup-content">
         <span class="close">&times;</span>
-        <h2>Select Plane Model</h2> 
+        <h2>AIRCRAFT</h2> 
         <ul>
-            <li><img src="Assets/img/jetstar787.png" height="100"><button class="plane-option" data-model="./Assets/glTF/low_poly_boeing_787-8/scene.gltf">Boeing 787-8 (Jetstar)</button></li>
-            <li><img src="Assets/img/phenom.png" height="100"><button class="plane-option" data-model="./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf">Embraer Phenom</button></li>
+            <li><button class="plane-option" data-model="./Assets/glTF/low_poly_boeing_787-8/scene.gltf"><img src="Assets/img/jetstar787.png" height="100"><br>Boeing 787-8 (Jetstar)</button></li>
+            <li><button class="plane-option" data-model="./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf"><img src="Assets/img/phenom.png" height="100"><br>Embraer Phenom</button></li>
             <li>Boeing 737<button onclick="document.getElementById('hidden3').style.display='block'">liveries&RightTriangle;</button></li>
             <div id="hidden3" style="display:none;">
-                <li><img src="Assets/img/american737.png" height="100"><button class="option747" data-model="./Assets/glTF/boeing_737_american_airlines/scene.gltf">American Airlines</button></li>
-                <li><img src="Assets/img/lionair.png" height="100"><button class="plane-option" data-model="./Assets/glTF/737_max_lion_air/scene.gltf">Lion air</button></li>
+                <li><button class="option747" data-model="./Assets/glTF/boeing_737_american_airlines/scene.gltf"><img src="Assets/img/american737.png" height="100"><br>American Airlines</button></li>
+                <li><button class="plane-option" data-model="./Assets/glTF/737_max_lion_air/scene.gltf"><img src="Assets/img/lionair.png" height="100"><br>Lion air</button></li>
             </div>
             <li>Airbus A380 <button onclick="document.getElementById('hidden4').style.display='block'">liveries&RightTriangle;</button></li>
 <div id="hidden4" style="display:none;">
-            <li><img src="Assets/img/a380.png" height="100"><button class="option747" data-model="./Assets/glTF/airbus_a380/scene.gltf">Airbus</button></li>
-            <li><img src="Assets/img/koreana380.png" height="100"><button class="option747" data-model="./Assets/glTF/korean_air__a380/scene.gltf">Korean Air</button></li>
+            <li><button class="option747" data-model="./Assets/glTF/airbus_a380/scene.gltf"><img src="Assets/img/a380.png" height="100"><br>Airbus</button></li>
+            <li>≈<button class="option747" data-model="./Assets/glTF/korean_air__a380/scene.gltf"><img src="Assets/img/a380.png" height="100"><br>Korean Air</button></li>
         </div> 
-                <li><img src="Assets/img/a330canada.png" height="100"><button class="option747" data-model="./Assets/glTF/a330_air_canada/scene.gltf">A330</button></li>
+                <li><button class="option747" data-model="./Assets/glTF/a330_air_canada/scene.gltf"><img src="Assets/img/a330canada.png" height="100"><br>A330 (Air Canada)</button></li>
                 <li>Airbus A340<button onclick="document.getElementById('hidden5').style.display='block'">liveries&RightTriangle;</button></li>
                 <div id="hidden5" style="display:none;">
-                    <li><img src="Assets/img/iberia340.png" height="100"><button class="option747" data-model="./Assets/glTF/a340_iberia/scene.gltf">Iberia</button></li>
-                    <li><img src="Assets/img/hiflya340.png" height="100"><button class="option747" data-model="./Assets/glTF/a340-500_plane/scene.gltf">Hifly</button></li>
+                    <li><button class="option747" data-model="./Assets/glTF/a340_iberia/scene.gltf"><img src="Assets/img/iberia340.png" height="100"><br>Iberia</button></li>
+                    <li><button class="option747" data-model="./Assets/glTF/a340-500_plane/scene.gltf"><img src="Assets/img/hiflya340.png" height="100"><br>Hifly</button></li>
 </div>
 <li>Boeing 717<button onclick="document.getElementById('hidden6').style.display='block'">liveries&RightTriangle;</button></li>
 <div id="hidden6" style="display:none;">
-    <li><img src="Assets/img/delta717.png" height="100"><button class="plane-option" data-model="./Assets/glTF/boeing_717_delta/scene.gltf">Delta</button></li>
-    <li><img src="Assets/img/17hawaii.png" height="100"><button class="plane-option" data-model="./Assets/glTF/boeing_717_hawaiian_airlines/scene.gltf">Hawaiian Airlines</button></li>
-    <li><img src="Assets/img/17qlk.png" height="100"><button class="plane-option" data-model="./Assets/glTF/boeing_717_qantaslink/scene.gltf">QantasLink</button></li>
+    <li><button class="plane-option" data-model="./Assets/glTF/boeing_717_delta/scene.gltf"><img src="Assets/img/delta717.png" height="100"><br>Delta</button></li>
+    <li><button class="plane-option" data-model="./Assets/glTF/boeing_717_hawaiian_airlines/scene.gltf"><br>Hawaiian Airlines</button></li>
+    <!--<li><img src="Assets/img/17qlk.png" height="100"><button class="plane-option" data-model="./Assets/glTF/boeing_717_qantaslink/scene.gltf"><br>QantasLink (R.I.P)</button></li>-->
 
     </div>
     <li>Boeing 777<button onclick="document.getElementById('hidden7').style.display='block'">liveries&RightTriangle;</button></li>
     <div id="hidden7" style="display:none;">
-        <li><img src="Assets/img/aeroflot777.png" height="100"><button class="option747" data-model="./Assets/glTF/boeing_777_aeroflot/scene.gltf">Aeroflot</button></li>
-        <li><img src="Assets/img/airnewzealand777.png" height="100"><button class="optionSmall" data-model="./Assets/glTF/air_new_zealand_boeing_777_219_er_updated_livery/scene.gltf">Air New Zealand</button></li>
+        <li><button class="option747" data-model="./Assets/glTF/boeing_777_aeroflot/scene.gltf"><img src="Assets/img/aeroflot777.png" height="100"><br>Aeroflot</button></li>
+        <li><button class="optionSmall" data-model="./Assets/glTF/air_new_zealand_boeing_777_219_er_updated_livery/scene.gltf"><img src="Assets/img/airnewzealand777.png" height="100"><br>Air New Zealand</button></li>
         </div>
-        <li><img src="Assets/img/glider.png" height="100"><button class="plane-option" data-model="./Assets/glTF/underpoly_free_sailplane_glider/scene.gltf">Glider</button></li>
-        <li><img src="Assets/img/j31.jpg" height="100"><button class="optionBig" data-model="./Assets/glTF/shenyang_j31_gyrfalcon/scene.gltf">Shenyang J31</button></li>
-        <li><img src="Assets/img/cityjet.png" height="100"><button class="optionBig" data-model="./Assets/glTF/airplane_crj-900_cityjet/scene.gltf">CRJ-900 cityjet</button></li>
-        <li><img src="Assets/img/beluga.png" height="100"><button class="plane-option" data-model="./Assets/glTF/airbus-beluga-xl/source/airbus_beluga_xl.glb">Airbus Beluga XL</button></li>
+        <li><button class="plane-option" data-model="./Assets/glTF/underpoly_free_sailplane_glider/scene.gltf"><img src="Assets/img/glider.png" height="100"><br>Glider</button></li>
+        <li><button class="optionBig" data-model="./Assets/glTF/shenyang_j31_gyrfalcon/scene.gltf"><img src="Assets/img/j31.jpg" height="100"><br>Shenyang J31</button></li>
+        <li><button class="optionBig" data-model="./Assets/glTF/airplane_crj-900_cityjet/scene.gltf"><img src="Assets/img/cityjet.png" height="100"><br>CRJ-900 cityjet</button></li>
+        <li><button class="plane-option" data-model="./Assets/glTF/airbus-beluga-xl/source/airbus_beluga_xl.glb"><img src="Assets/img/beluga.png" height="100"><br>Airbus Beluga XL</button></li>
             </ul>
     </div>
 </div>
