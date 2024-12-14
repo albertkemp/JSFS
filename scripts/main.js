@@ -291,6 +291,9 @@ function updateModelRotation() {
         if (keyState['Period']) {
             model.rotation.y -= controlsSpeed; // Yaw right
         }
+        if(model.y<=0){
+            model.y=0;
+        }
         // Apply throttle to move the model forward along the z-axis
         model.translateZ(throttle * 0.003); // Move the model forward
     }
