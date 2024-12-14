@@ -1,6 +1,6 @@
-/*if(localStorage.getItem("popupShown")!="true"){
+document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("popup").style.display="block";
-}*/
+});
 
 var popupContent = document.getElementById("popup-content");
 function changePopup(content){
@@ -8,7 +8,7 @@ function changePopup(content){
 }
 var instructionButton = document.getElementById("instructionButton");
 instructionButton.addEventListener("click", function(){
-    changePopup(`<h1>Some instructions before takeoff</h1>
+    changePopup(`<h1>INSTRUCTIONS</h1>
     <h2>Controls:</h2>
     <p>Left and right arrow to roll and yaw left and right</p>
     <p>Keys 0-9 for throttle</p>
@@ -19,7 +19,7 @@ instructionButton.addEventListener("click", function(){
 });
 var creditButton = document.getElementById("creditButton");
 creditButton.addEventListener("click", function(){
-    changePopup(`<h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><button onclick="window.location.href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</button>`);
+    changePopup(`<button class="tsbut" style="position:absolute;top:0;right:0;">&times;</button><h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><a href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</a>`);
     openPopup();
 });
 function closePopup(){
