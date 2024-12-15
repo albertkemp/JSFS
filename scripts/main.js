@@ -1,3 +1,33 @@
+let model;
+let throttle = 0; // Initialize throttle at 0%
+const cameraOffset = new THREE.Vector3(0, 3, 10); // Offset for the camera relative to the model
+
+const loader = new THREE.GLTFLoader();
+function applyTextureToLargePlane(model, texturePath) {
+const textureLoader = new THREE.TextureLoader();
+textureLoader.load(texturePath, function(texture) {
+model.traverse(function(child) {
+    if (child.isMesh) {
+        child.material.map = texture;
+        child.material.needsUpdate = true;
+    }
+});
+}, undefined, function(error) {
+console.error('Error loading texture:', error);
+});
+}
+
+loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y=0;
+    model.scale.set(0.4, 0.4, 0.4);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("popup").style.display="block";
 });
@@ -83,36 +113,7 @@ function createRunway(x, z) {
 createRunway(0, 0);
 createRunway(-10, 20);
 
-let model;
-let throttle = 0; // Initialize throttle at 0%
-const cameraOffset = new THREE.Vector3(0, 3, 10); // Offset for the camera relative to the model
 
-const loader = new THREE.GLTFLoader();
-function applyTextureToLargePlane(model, texturePath) {
-const textureLoader = new THREE.TextureLoader();
-textureLoader.load(texturePath, function(texture) {
-model.traverse(function(child) {
-    if (child.isMesh) {
-        child.material.map = texture;
-        child.material.needsUpdate = true;
-    }
-});
-}, undefined, function(error) {
-console.error('Error loading texture:', error);
-});
-}
-
-loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (gltf) {
-    model = gltf.scene;
-    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-    model.rotation.x = 0;
-    model.position.z = 25;
-    model.position.y=0;
-    model.scale.set(0.4, 0.4, 0.4);
-    scene.add(model);
-}, undefined, function (error) {
-    console.error(error);
-});
 document.addEventListener('DOMContentLoaded', () => {
 const selectPlaneButton = document.getElementById('selectPlaneButton');
 const planePopup = document.getElementById('planePopup');
