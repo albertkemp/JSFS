@@ -368,31 +368,24 @@ animate();*/
     document.getElementById("popup").style.display="block";
 }*/
 
-var popupContent = document.getElementById("popup-content");
-function changePopup(content){
-    popupContent.innerHTML=content;
+if(localStorage.getItem("popupShown")!="true"){
+    document.getElementById("popup").style.display="block";
 }
-var instructionButton = document.getElementById("instructionButton");
-instructionButton.addEventListener("click", function(){
-    changePopup(`<h1>Some instructions before takeoff</h1>
+var popupContent = document.getElementById("popup-content");
+function changePopup(){
+    popupContent.innerHTML=`
+    <h1>Some instructions before takeoff</h1>
     <h2>Controls:</h2>
     <p>Left and right arrow to roll and yaw left and right</p>
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
-    <button onclick="closePopup()">FLY!</button>`);
-    openPopup();
-});
-var creditButton = document.getElementById("creditButton");
-creditButton.addEventListener("click", function(){
-    changePopup(`<h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><button onclick="window.location.href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</button>`);
-    openPopup();
-});
+    <button onclick="closePopup()">FLY!</button>
+    `;
+}
 function closePopup(){
     document.getElementById("popup").style.display="none";
-}
-function openPopup(){
-    document.getElementById("popup").style.display="block";
+    localStorage.setItem("popupShown", "true");
 }
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -647,7 +640,7 @@ function handleThrottle(event) {
         throttle = 0; // Set throttle to 0%
     }
 }
-const gravity = -0.01
+
 function updateModelRotation() {
     if (model && throttle>0) {
         if (keyState['ArrowLeft']) {
@@ -668,9 +661,8 @@ function updateModelRotation() {
         if (keyState['Period']) {
             model.rotation.y -= controlsSpeed; // Yaw right
         }
-        if(model){
-            model.position.y +=gravity;
-            model.position.y = Math.max(model.position.y, 0);
+        if(model.y<=0){
+            model.y=0;
         }
         // Apply throttle to move the model forward along the z-axis
         model.translateZ(throttle * 0.003); // Move the model forward
@@ -717,12 +709,10 @@ controls.update(); // Update controls
 renderer.render(scene, camera);
 
 // Check if the model has crashed
- 
- /*
 if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
 hasCrashed = true; // Set the crash flag to true
 document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
-}*/
+}
 
 // Debugging logs
 console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
