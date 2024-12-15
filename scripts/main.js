@@ -19,7 +19,7 @@ instructionButton.addEventListener("click", function(){
 });
 var creditButton = document.getElementById("creditButton");
 creditButton.addEventListener("click", function(){
-    changePopup(`<button class="tsbut" style="position:relative;top:0;right:0;" onclick="closePopup()">&times;</button><h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><a href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</a>`);
+    changePopup(`<button class="tsbut" style="position:relative;top:0;right:0;" onclick="closePopup()">&times;</button><h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><a target="_blank" href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</a>`);
     openPopup();
 });
 function closePopup(){

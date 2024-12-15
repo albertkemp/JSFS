@@ -44,6 +44,7 @@ background-color: #818181;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    position:fixed;
 }
 
 .close:hover,
