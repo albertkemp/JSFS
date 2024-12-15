@@ -721,8 +721,8 @@ renderer.render(scene, camera);
  /*
 if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
 hasCrashed = true; // Set the crash flag to true
-document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert*/
-}
+document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
+}*/
 
 // Debugging logs
 console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
