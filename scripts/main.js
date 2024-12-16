@@ -345,27 +345,31 @@ controls.target.copy(model.position);
 let hasCrashed = false; // Flag to track if the crash alert has been shown
 
 function animate() {
-requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-updateModelRotation(); // Update model rotation based on key presses
+    if (model) {
+        updateModelRotation(); // Update model rotation based on key presses
 
-if (!isMouseDown) {
-updateCameraPosition(); // Update camera focus and position relative to the model
+        if (!isMouseDown) {
+            updateCameraPosition(); // Update camera focus and position relative to the model
+        }
+    }
+
+    controls.update(); // Update controls
+
+    renderer.render(scene, camera);
+
+    // Check if the model has crashed
+    /*
+    if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
+        hasCrashed = true; // Set the crash flag to true
+        document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
+    }
+    */
+    // Debugging logs
+    if (model) {
+        console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
+    }
 }
-
-controls.update(); // Update controls
-
-renderer.render(scene, camera);
-
-// Check if the model has crashed
- 
- /*
-if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
-hasCrashed = true; // Set the crash flag to true
-document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
-}
-*/
-// Debugging logs
-console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
-}
+animate();
 animate();
