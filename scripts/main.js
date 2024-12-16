@@ -172,20 +172,20 @@ option.addEventListener('click', (event) => {
 });
 });
 function loadModel(modelPath) {
-if (model) {
-    scene.remove(model);
-}
-loader.load(modelPath, function (gltf) {
-    model = gltf.scene;
-    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-    model.rotation.x = 0;
-    model.position.z = 25;
-    model.position.y = 1;
-    model.scale.set(0.4, 0.4, 0.4);
-    scene.add(model);
-}, undefined, function (error) {
-    console.error(error);
-});
+    if (model) {
+        scene.remove(model);
+    }
+    loader.load(modelPath, function (gltf) {
+        model = gltf.scene;
+        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+        model.rotation.x = 0;
+        model.position.z = 25;
+        model.position.y = 1;
+        model.scale.set(0.4, 0.4, 0.4);
+        scene.add(model);
+    }, undefined, function (error) {
+        console.error('Error loading model:', error);
+    });
 }
 function load747(modelPath) {
 if (model) {
