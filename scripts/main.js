@@ -2,6 +2,45 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("popup").style.display="block";
 });
 
+let isWalking = false; 
+document.addEventListener('keydown', function(event) {
+    console.log('Key pressed:', event.key);
+    if (event.key === 'p') {
+        console.log('Switching to piloting mode');
+        isWalking = false;
+    } else if (event.key === 'w') {
+        console.log('Switching to walking mode');
+        isWalking = true;
+    }
+});
+
+function handleWalkingControls() {
+    document.addEventListener('keydown', function(event) {
+        if (isWalking) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    // Move forward
+                    camera.position.z -= 10;
+                    break;
+                case 'ArrowDown':
+                    // Move backward
+                    camera.position.z += 10;
+                    break;
+                case 'ArrowLeft':
+                    // Move left
+                    camera.position.x -= 10;
+                    break;
+                case 'ArrowRight':
+                    // Move right
+                    camera.position.x += 10;
+                    break;
+            }
+        }
+    });
+}
+
+handleWalkingControls();
+
 var popupContent = document.getElementById("popup-content");
 function changePopup(content){
     popupContent.innerHTML=content;
@@ -40,24 +79,18 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // Color, Intensity
 scene.add(ambientLight);
 
 // Add a stronger Directional Light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.25);
 directionalLight.position.set(0, 5, 5).normalize();
 scene.add(directionalLight);
 
-// Create the terrain (simple plane with a grass texture)
+// Create the terrain (simple plane with a grass green color)
 const terrainGeometry = new THREE.PlaneGeometry(10000, 10000, 32, 32);
-const textureLoader = new THREE.TextureLoader();
-textureLoader.load('./Assets/img/texture.png', function(texture) {
-const terrainMaterial = new THREE.MeshLambertMaterial({ map: texture });
+const terrainMaterial = new THREE.MeshLambertMaterial({ color: 0x00FF00 }); // Grass green color
 const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
 terrain.rotation.x = -Math.PI / 2; // Rotate the plane to make it horizontal
 terrain.position.y = 0; // Ensure the plane is at ground level
 scene.add(terrain);
 console.log('Terrain added to the scene');
-}, undefined, function(error) {
-console.error('Error loading texture:', error);
-});
-
 
 // Create mountains using cone geometry
 function createMountain(x, z) {
@@ -70,7 +103,7 @@ function createMountain(x, z) {
 createMountain(-20, -20);
 createMountain(30, -10);
 createMountain(10, 10);
-
+/*
 // Create a runway
 function createRunway(x, z) {
     const runwayGeometry = new THREE.PlaneGeometry(5, 50);
@@ -80,14 +113,21 @@ function createRunway(x, z) {
     runway.position.set(x, 0.01, z); // Slightly above the terrain to avoid z-fighting
     scene.add(runway);
 }
+
 createRunway(0, 0);
-createRunway(-10, 20);
+createRunway(-10, 20);*/
 
 let model;
 let throttle = 0; // Initialize throttle at 0%
 const cameraOffset = new THREE.Vector3(0, 3, 10); // Offset for the camera relative to the model
 
-const loader = new THREE.GLTFLoader();
+// Create a manager for the GLTFLoader to handle binary data
+const manager = new THREE.LoadingManager();
+manager.onError = function(url) {
+    console.error('Error loading:', url);
+};
+
+const loader = new THREE.GLTFLoader(manager);
 function applyTextureToLargePlane(model, texturePath) {
 const textureLoader = new THREE.TextureLoader();
 textureLoader.load(texturePath, function(texture) {
@@ -102,6 +142,27 @@ console.error('Error loading texture:', error);
 });
 }
 
+// Add a function to load GLB files
+function loadGLBModel(modelPath) {
+    if (model) {
+        scene.remove(model);
+    }
+    loader.load(modelPath, function (gltf) {
+        model = gltf.scene;
+        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+        model.rotation.x = 0;
+        model.position.z = 25;
+        model.position.y = 1;
+        model.scale.set(0.4, 0.4, 0.4);
+        scene.add(model);
+        console.log('GLB Model loaded successfully:', modelPath);
+    }, undefined, function (error) {
+        console.error('Error loading GLB model:', error);
+        console.error('URL:', modelPath);
+    });
+}
+
+if (!isWalking) {
 loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (gltf) {
     model = gltf.scene;
     model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -109,10 +170,36 @@ loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (g
     model.position.z = 25;
     model.position.y=0;
     model.scale.set(0.4, 0.4, 0.4);
-    scene.add(model);
+scene.add(model);
 }, undefined, function (error) {
-    console.error(error);
+    console.error('Error loading model:', error);
+    console.error('URL:', './Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf');
 });
+}
+
+loader.load('./Assets/glTF/airport/scene.gltf', function (gltf) {
+    airport = gltf.scene;
+    airport.rotation.x = 0;
+    airport.position.z = 25;
+    airport.position.y = 0.001;
+    airport.scale.set(0.005, 0.005, 0.005);
+    scene.add(airport);
+}, undefined, function (error) {
+    console.error('Error loading airport:', error);
+    console.error('URL:', './Assets/glTF/airport/scene.gltf');
+});
+loader.load('./Assets/glTF/a_minimalist_airport_diorama/scene.gltf', function (gltf) {
+    airport = gltf.scene;
+    airport.rotation.x = 0;
+    airport.position.z = 500;
+    airport.position.y = 0;
+    airport.scale.set(1, 1, 1);
+    scene.add(airport);
+}, undefined, function (error) {
+    console.error('Error loading airport:', error);
+    console.error('URL:', './Assets/glTF/a_minimalist_airport_diorama/scene.gltf');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 const selectPlaneButton = document.getElementById('selectPlaneButton');
 const planePopup = document.getElementById('planePopup');
@@ -131,14 +218,16 @@ planePopup.style.display = 'none';
 });
 
 window.addEventListener('click', (event) => {
-if (event.target == planePopup) {
-    planePopup.style.display = 'none';
-}
+    if (event.target == planePopup) {
+        planePopup.style.display = 'none';
+    }
 });
-
+document.addEventListener('DOMContentLoaded', function(){
 planeOptions.forEach(option => {
 option.addEventListener('click', (event) => {
+    
     const modelPath = event.target.getAttribute('data-model');
+    console.log(modelPath);
     loadModel(modelPath);
     planePopup.style.display = 'none';
 });
@@ -146,6 +235,7 @@ option.addEventListener('click', (event) => {
 sevenOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
+    console.log(modelPath);
     load747(modelPath);
     planePopup.style.display = 'none';
 });
@@ -153,6 +243,7 @@ option.addEventListener('click', (event) => {
 sideOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
+    console.log(modelPath);
     loadSideways(modelPath);
     planePopup.style.display = 'none';
 });
@@ -160,6 +251,7 @@ option.addEventListener('click', (event) => {
 bigOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
+    console.log(modelPath);
     loadBig(modelPath);
     planePopup.style.display = 'none';
 });
@@ -167,14 +259,26 @@ option.addEventListener('click', (event) => {
 smallOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
+    console.log(modelPath);
     loadSmall(modelPath);
     planePopup.style.display = 'none';
+});
 });
 });
 function loadModel(modelPath) {
     if (model) {
         scene.remove(model);
     }
+    
+    // Check if the model is a GLB file
+    if (modelPath.endsWith('.glb')) {
+        loadGLBModel(modelPath);
+        return;
+    }
+    
+    // Extract the directory path from the model path
+    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
+    
     loader.load(modelPath, function (gltf) {
         model = gltf.scene;
         model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -184,8 +288,16 @@ function loadModel(modelPath) {
         model.scale.set(0.4, 0.4, 0.4);
         scene.add(model);
         console.log('Model loaded successfully:', modelPath);
-    }, undefined, function (error) {
+    }, 
+    // Progress callback
+    function(xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    // Error callback
+    function (error) {
         console.error('Error loading model:', error);
+        console.error('URL:', modelPath);
+        console.error('Model directory:', modelDir);
     });
 }
 
@@ -193,6 +305,16 @@ function load747(modelPath) {
     if (model) {
         scene.remove(model);
     }
+    
+    // Check if the model is a GLB file
+    if (modelPath.endsWith('.glb')) {
+        loadGLBModel(modelPath);
+        return;
+    }
+    
+    // Extract the directory path from the model path
+    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
+    
     loader.load(modelPath, function (gltf) {
         model = gltf.scene;
         model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -202,8 +324,16 @@ function load747(modelPath) {
         model.scale.set(0.2, 0.2, 0.2);
         scene.add(model);
         console.log('Model loaded successfully:', modelPath);
-    }, undefined, function (error) {
+    }, 
+    // Progress callback
+    function(xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    // Error callback
+    function (error) {
         console.error('Error loading model:', error);
+        console.error('URL:', modelPath);
+        console.error('Model directory:', modelDir);
     });
 }
 
@@ -211,6 +341,16 @@ function loadBig(modelPath) {
     if (model) {
         scene.remove(model);
     }
+    
+    // Check if the model is a GLB file
+    if (modelPath.endsWith('.glb')) {
+        loadGLBModel(modelPath);
+        return;
+    }
+    
+    // Extract the directory path from the model path
+    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
+    
     loader.load(modelPath, function (gltf) {
         model = gltf.scene;
         model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -220,8 +360,16 @@ function loadBig(modelPath) {
         model.scale.set(0.7, 0.7, 0.7);
         scene.add(model);
         console.log('Model loaded successfully:', modelPath);
-    }, undefined, function (error) {
+    }, 
+    // Progress callback
+    function(xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    // Error callback
+    function (error) {
         console.error('Error loading model:', error);
+        console.error('URL:', modelPath);
+        console.error('Model directory:', modelDir);
     });
 }
 
@@ -229,6 +377,16 @@ function loadSmall(modelPath) {
     if (model) {
         scene.remove(model);
     }
+    
+    // Check if the model is a GLB file
+    if (modelPath.endsWith('.glb')) {
+        loadGLBModel(modelPath);
+        return;
+    }
+    
+    // Extract the directory path from the model path
+    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
+    
     loader.load(modelPath, function (gltf) {
         model = gltf.scene;
         model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -238,14 +396,19 @@ function loadSmall(modelPath) {
         model.scale.set(0.004, 0.004, 0.004);
         scene.add(model);
         console.log('Model loaded successfully:', modelPath);
-    }, undefined, function (error) {
+    }, 
+    // Progress callback
+    function(xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+    },
+    // Error callback
+    function (error) {
         console.error('Error loading model:', error);
+        console.error('URL:', modelPath);
+        console.error('Model directory:', modelDir);
     });
 }
 });
-
-
-
 
 camera.position.set(0, 3, 28); // Initial camera position
 
@@ -314,7 +477,7 @@ function updateModelRotation() {
             model.position.y = Math.max(model.position.y, 0);
         }
         // Apply throttle to move the model forward along the z-axis
-        model.translateZ(throttle * 0.003); // Move the model forward
+        model.translateZ(throttle * 0.0035); // Move the model forward
     }
 }
 let isMouseDown = false;
@@ -348,10 +511,12 @@ function animate() {
     requestAnimationFrame(animate);
 
     if (model) {
-        updateModelRotation(); // Update model rotation based on key presses
+        if (!isWalking) {
+            updateModelRotation(); // Update model rotation based on key presses
 
-        if (!isMouseDown) {
-            updateCameraPosition(); // Update camera focus and position relative to the model
+            if (!isMouseDown) {
+                updateCameraPosition(); // Update camera focus and position relative to the model
+            }
         }
     }
 

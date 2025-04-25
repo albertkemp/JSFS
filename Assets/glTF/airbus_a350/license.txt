@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airbus A350
+* source:	https://sketchfab.com/3d-models/airbus-a350-cfa2836ead8c4278a199a7d34a87f02e
+* author:	jhag (https://sketchfab.com/jhag)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airbus A350" (https://sketchfab.com/3d-models/airbus-a350-cfa2836ead8c4278a199a7d34a87f02e) by jhag (https://sketchfab.com/jhag) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
