@@ -7,7 +7,8 @@ function changePopup(){
     <button id="close">&times;</button>
     <h1>Some instructions before takeoff</h1>
     <h2>Controls:</h2>
-    <p>Left and right arrow to roll and yaw left and right</p>
+    <p>Left and right arrow to roll left/right</p>
+    <p>&lt; and &gt; for yawing left and right</p>
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
