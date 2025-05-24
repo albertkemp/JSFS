@@ -1,3 +1,4 @@
+🎉 100 Commits! 💯
 <img width="400" alt="Screenshot 2024-08-29 at 9 51 37 am" src="https://github.com/user-attachments/assets/9aae4adf-8c70-4f7a-84b7-4ba0a0d0c4a3">
 A380 in image above credit to JUSTGAME (https://sketchfab.com/ayapenid), license below in <a href="https://github.com/albertkemp/JSFS/main/README.md#Credits">Credits</a>
                                                                                     
@@ -8,6 +9,10 @@ A380 in image above credit to JUSTGAME (https://sketchfab.com/ayapenid), license
 
 # Credits:
 I downloaded the glTF files from Sketchfab free models. The licenses of the creators are credited below:
+## Airport:
+"Airport" (https://skfb.ly/oRtKs) by mamont nikita is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+## A Minimalistic airport diorama
+"A Minimalist Airport Diorama" (https://skfb.ly/oZVQT) by AGUNG.IHACKSTUFF@GMAIL.COM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
 ## 737 max lion air: 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
