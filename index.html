@@ -138,15 +138,16 @@ background-color: darkgrey;
     </style>
 </head>
 <body>
-    <div id="bottomBar"><button id="selectPlaneButton" style="border:none;background-color: #00000000;font-size:20px;color:#000;">AIRCRAFT</button></div>
+    <div id="bottomBar"><button id="selectPlaneButton" class="tsbut">AIRCRAFT</button><button id="instructionButton" class="tsbut">INSTRUCTIONS</button><button id="creditButton" class="tsbut">CREDITS</button></div>
     
-<div id="popup">
-    <div id="popup-content">
-    <h1>JSFS 3D Flight simulator</h1>
-    <h2>NOTE: This flight simulator is <b>in testing and isn't done yet</b>. Check back later to see better graphics and scenery</h2>
-    <button onclick="changePopup()">START</button>
+    <div id="popup">
+        <div id="popup-content">
+        <h1>JSFS 3D Flight simulator</h1>
+        <h2>NOTE: This flight simulator is <b>in testing and isn't done yet</b>. Check back later to see better graphics and scenery</h2>
+        <h2>Credit: I downloaded these .glTF 3d models from Sketchfab, thanks to all the users that have created them. The 3D models are licensed under creative commons licenses.<button onclick="window.location.href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'">See Credits</button></h2>
+        <button onclick="changePopup(`<h1>Some instructions before takeoff</h1><h2>Controls:</h2><p>Left and right arrow to roll and yaw left and right</p><p>Keys 0-9 for throttle</p><p>Up and down arrow to pitch up and down</p><p>Click and drag to rotate, and scroll to zoom</p><button onclick='closePopup()'>FLY</button>`)">Next (view instructions)</button>
+        </div>
     </div>
-</div>
 <div id="crashMessage" style="display:none;">
     <h1>You crashed!</h1>
     <img src="https://media.tenor.com/x8v1oNUOmg4AAAAM/rickroll-roll.gif" width="200">
