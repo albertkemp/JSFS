@@ -1,71 +1,22 @@
-document.addEventListener("DOMContentLoaded", function(){
+if(localStorage.getItem("popupShown")!="true"){
     document.getElementById("popup").style.display="block";
-});
-
-let isWalking = false; 
-document.addEventListener('keydown', function(event) {
-    console.log('Key pressed:', event.key);
-    if (event.key === 'p') {
-        console.log('Switching to piloting mode');
-        isWalking = false;
-    } else if (event.key === 'w') {
-        console.log('Switching to walking mode');
-        isWalking = true;
-    }
-});
-
-function handleWalkingControls() {
-    document.addEventListener('keydown', function(event) {
-        if (isWalking) {
-            switch (event.key) {
-                case 'ArrowUp':
-                    // Move forward
-                    camera.position.z -= 10;
-                    break;
-                case 'ArrowDown':
-                    // Move backward
-                    camera.position.z += 10;
-                    break;
-                case 'ArrowLeft':
-                    // Move left
-                    camera.position.x -= 10;
-                    break;
-                case 'ArrowRight':
-                    // Move right
-                    camera.position.x += 10;
-                    break;
-            }
-        }
-    });
 }
-
-handleWalkingControls();
-
 var popupContent = document.getElementById("popup-content");
-function changePopup(content){
-    popupContent.innerHTML=content;
-}
-var instructionButton = document.getElementById("instructionButton");
-instructionButton.addEventListener("click", function(){
-    changePopup(`<h1>INSTRUCTIONS</h1>
+function changePopup(){
+    popupContent.innerHTML=`
+    <button id="close">&times;</button>
+    <h1>Some instructions before takeoff</h1>
     <h2>Controls:</h2>
     <p>Left and right arrow to roll and yaw left and right</p>
     <p>Keys 0-9 for throttle</p>
     <p>Up and down arrow to pitch up and down</p>
     <p>Click and drag to rotate, and scroll to zoom</p>
-    <button onclick="closePopup()">FLY!</button>`);
-    openPopup();
-});
-var creditButton = document.getElementById("creditButton");
-creditButton.addEventListener("click", function(){
-    changePopup(`<button class="tsbut" style="position:relative;top:0;right:0;" onclick="closePopup()">&times;</button><h1>Credits:</h1><p>If you want to view credits, please visit the README on this project's Github repository: </p><a target="_blank" href='https://github.com/albertkemp/JSFS?tab=readme-ov-file#credits'>Visit credits page</a>`);
-    openPopup();
-});
+    <button onclick="closePopup()">FLY!</button>
+    `;
+}
 function closePopup(){
     document.getElementById("popup").style.display="none";
-}
-function openPopup(){
-    document.getElementById("popup").style.display="block";
+    localStorage.setItem("popupShown", "true");
 }
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -79,20 +30,48 @@ const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // Color, Intensity
 scene.add(ambientLight);
 
 // Add a stronger Directional Light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.25);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(0, 5, 5).normalize();
 scene.add(directionalLight);
 
-// Create the terrain (simple plane with a grass green color)
-const terrainGeometry = new THREE.PlaneGeometry(10000, 10000, 32, 32);
-const terrainMaterial = new THREE.MeshLambertMaterial({ color: 0x00FF00 }); // Grass green color
-const terrain = new THREE.Mesh(terrainGeometry, terrainMaterial);
-terrain.rotation.x = -Math.PI / 2; // Rotate the plane to make it horizontal
-terrain.position.y = 0; // Ensure the plane is at ground level
-scene.add(terrain);
-console.log('Terrain added to the scene');
+// Define terrain parameters
+// Define terrain parameters
+const widthTiles = 50;  // Number of tiles along the X-axis (width)
+const depthTiles = 200; // Number of tiles along the Z-axis (depth)
+const tileSize = 10;    // The size of each individual tile (e.g., 10 units by 10 units)
 
-// Create mountains using cone geometry
+// Calculate the total actual dimensions of the terrain
+const totalTerrainWidth = widthTiles * tileSize;  // 50 * 10 = 500 units
+const totalTerrainDepth = depthTiles * tileSize; // 200 * 10 = 2000 units
+
+const textureLoader = new THREE.TextureLoader();
+textureLoader.load('./Assets/img/texture.png', function(texture) {
+    const terrainMaterial = new THREE.MeshLambertMaterial({ map: texture });
+
+    for (let i = 0; i < widthTiles; i++) { // Loop for the width (X-axis)
+        for (let j = 0; j < depthTiles; j++) { // Loop for the depth (Z-axis)
+            const terrainGeometry = new THREE.PlaneGeometry(tileSize, tileSize, 16, 16);
+            const terrainTile = new THREE.Mesh(terrainGeometry, terrainMaterial);
+
+            // Calculate position for each tile
+            // Center the entire grid around (0,0) based on its new dimensions
+            terrainTile.position.x = (i * tileSize) - (totalTerrainWidth / 2) + (tileSize / 2);
+            terrainTile.position.z = (j * tileSize) - (totalTerrainDepth / 2) + (tileSize / 2);
+            terrainTile.position.y = 0; // Ensure the tile is at ground level
+
+            terrainTile.rotation.x = -Math.PI / 2; // Rotate the plane to make it horizontal
+
+            scene.add(terrainTile);
+        }
+    }
+    console.log(`Created ${widthTiles}x${depthTiles} = ${widthTiles * depthTiles} terrain tiles.`);
+    console.log(`Total terrain dimensions: ${totalTerrainWidth} units (width) x ${totalTerrainDepth} units (depth).`);
+
+}, undefined, function(error) {
+    console.error('Error loading texture:', error);
+});
+
+/*   // Create mountains using cone geometry
 function createMountain(x, z) {
     const mountainGeometry = new THREE.ConeGeometry(5, 5, 32);
     const mountainMaterial = new THREE.MeshLambertMaterial({ color: 0x8B4513 }); // Brown color for mountains
@@ -103,9 +82,9 @@ function createMountain(x, z) {
 createMountain(-20, -20);
 createMountain(30, -10);
 createMountain(10, 10);
-/*
+*/
 // Create a runway
-function createRunway(x, z) {
+/*function createRunway(x, z) {
     const runwayGeometry = new THREE.PlaneGeometry(5, 50);
     const runwayMaterial = new THREE.MeshLambertMaterial({ color: 0x333333 }); // Dark grey for the runway
     const runway = new THREE.Mesh(runwayGeometry, runwayMaterial);
@@ -113,21 +92,16 @@ function createRunway(x, z) {
     runway.position.set(x, 0.01, z); // Slightly above the terrain to avoid z-fighting
     scene.add(runway);
 }
-
 createRunway(0, 0);
-createRunway(-10, 20);*/
-
+createRunway(-10, 20);
+*/
 let model;
+let airport;
 let throttle = 0; // Initialize throttle at 0%
 const cameraOffset = new THREE.Vector3(0, 3, 10); // Offset for the camera relative to the model
 
-// Create a manager for the GLTFLoader to handle binary data
-const manager = new THREE.LoadingManager();
-manager.onError = function(url) {
-    console.error('Error loading:', url);
-};
-
-const loader = new THREE.GLTFLoader(manager);
+const loader = new THREE.GLTFLoader();
+const airportLoader = new THREE.GLTFLoader();
 function applyTextureToLargePlane(model, texturePath) {
 const textureLoader = new THREE.TextureLoader();
 textureLoader.load(texturePath, function(texture) {
@@ -142,27 +116,7 @@ console.error('Error loading texture:', error);
 });
 }
 
-// Add a function to load GLB files
-function loadGLBModel(modelPath) {
-    if (model) {
-        scene.remove(model);
-    }
-    loader.load(modelPath, function (gltf) {
-        model = gltf.scene;
-        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-        model.rotation.x = 0;
-        model.position.z = 25;
-        model.position.y = 1;
-        model.scale.set(0.4, 0.4, 0.4);
-        scene.add(model);
-        console.log('GLB Model loaded successfully:', modelPath);
-    }, undefined, function (error) {
-        console.error('Error loading GLB model:', error);
-        console.error('URL:', modelPath);
-    });
-}
 
-if (!isWalking) {
 loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (gltf) {
     model = gltf.scene;
     model.rotation.y = Math.PI / 1;  // 90 degrees yaw
@@ -170,13 +124,10 @@ loader.load('./Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf', function (g
     model.position.z = 25;
     model.position.y=0;
     model.scale.set(0.4, 0.4, 0.4);
-scene.add(model);
+    scene.add(model);
 }, undefined, function (error) {
-    console.error('Error loading model:', error);
-    console.error('URL:', './Assets/glTF/embraer__phenom_300e_ar_v006/scene.gltf');
+    console.error(error);
 });
-}
-
 loader.load('./Assets/glTF/airport/scene.gltf', function (gltf) {
     airport = gltf.scene;
     airport.rotation.x = 0;
@@ -188,18 +139,6 @@ loader.load('./Assets/glTF/airport/scene.gltf', function (gltf) {
     console.error('Error loading airport:', error);
     console.error('URL:', './Assets/glTF/airport/scene.gltf');
 });
-loader.load('./Assets/glTF/a_minimalist_airport_diorama/scene.gltf', function (gltf) {
-    airport = gltf.scene;
-    airport.rotation.x = 0;
-    airport.position.z = 500;
-    airport.position.y = 0;
-    airport.scale.set(1, 1, 1);
-    scene.add(airport);
-}, undefined, function (error) {
-    console.error('Error loading airport:', error);
-    console.error('URL:', './Assets/glTF/a_minimalist_airport_diorama/scene.gltf');
-});
-
 document.addEventListener('DOMContentLoaded', () => {
 const selectPlaneButton = document.getElementById('selectPlaneButton');
 const planePopup = document.getElementById('planePopup');
@@ -218,16 +157,14 @@ planePopup.style.display = 'none';
 });
 
 window.addEventListener('click', (event) => {
-    if (event.target == planePopup) {
-        planePopup.style.display = 'none';
-    }
+if (event.target == planePopup) {
+    planePopup.style.display = 'none';
+}
 });
-document.addEventListener('DOMContentLoaded', function(){
+
 planeOptions.forEach(option => {
 option.addEventListener('click', (event) => {
-    
     const modelPath = event.target.getAttribute('data-model');
-    console.log(modelPath);
     loadModel(modelPath);
     planePopup.style.display = 'none';
 });
@@ -235,7 +172,6 @@ option.addEventListener('click', (event) => {
 sevenOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
-    console.log(modelPath);
     load747(modelPath);
     planePopup.style.display = 'none';
 });
@@ -243,7 +179,6 @@ option.addEventListener('click', (event) => {
 sideOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
-    console.log(modelPath);
     loadSideways(modelPath);
     planePopup.style.display = 'none';
 });
@@ -251,7 +186,6 @@ option.addEventListener('click', (event) => {
 bigOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
-    console.log(modelPath);
     loadBig(modelPath);
     planePopup.style.display = 'none';
 });
@@ -259,156 +193,78 @@ option.addEventListener('click', (event) => {
 smallOptions.forEach(option => {
 option.addEventListener('click', (event) => {
     const modelPath = event.target.getAttribute('data-model');
-    console.log(modelPath);
     loadSmall(modelPath);
     planePopup.style.display = 'none';
 });
 });
-});
 function loadModel(modelPath) {
-    if (model) {
-        scene.remove(model);
-    }
-    
-    // Check if the model is a GLB file
-    if (modelPath.endsWith('.glb')) {
-        loadGLBModel(modelPath);
-        return;
-    }
-    
-    // Extract the directory path from the model path
-    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
-    
-    loader.load(modelPath, function (gltf) {
-        model = gltf.scene;
-        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-        model.rotation.x = 0;
-        model.position.z = 25;
-        model.position.y = 1;
-        model.scale.set(0.4, 0.4, 0.4);
-        scene.add(model);
-        console.log('Model loaded successfully:', modelPath);
-    }, 
-    // Progress callback
-    function(xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-    // Error callback
-    function (error) {
-        console.error('Error loading model:', error);
-        console.error('URL:', modelPath);
-        console.error('Model directory:', modelDir);
-    });
+if (model) {
+    scene.remove(model);
 }
-
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 0;
+    model.scale.set(0.6, 0.6, 0.6);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
+}
 function load747(modelPath) {
-    if (model) {
-        scene.remove(model);
-    }
-    
-    // Check if the model is a GLB file
-    if (modelPath.endsWith('.glb')) {
-        loadGLBModel(modelPath);
-        return;
-    }
-    
-    // Extract the directory path from the model path
-    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
-    
-    loader.load(modelPath, function (gltf) {
-        model = gltf.scene;
-        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-        model.rotation.x = 0;
-        model.position.z = 25;
-        model.position.y = 1;
-        model.scale.set(0.2, 0.2, 0.2);
-        scene.add(model);
-        console.log('Model loaded successfully:', modelPath);
-    }, 
-    // Progress callback
-    function(xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-    // Error callback
-    function (error) {
-        console.error('Error loading model:', error);
-        console.error('URL:', modelPath);
-        console.error('Model directory:', modelDir);
-    });
+if (model) {
+    scene.remove(model);
 }
-
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 0;
+    model.scale.set(0.2, 0.2, 0.2);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
+}
 function loadBig(modelPath) {
-    if (model) {
-        scene.remove(model);
-    }
-    
-    // Check if the model is a GLB file
-    if (modelPath.endsWith('.glb')) {
-        loadGLBModel(modelPath);
-        return;
-    }
-    
-    // Extract the directory path from the model path
-    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
-    
-    loader.load(modelPath, function (gltf) {
-        model = gltf.scene;
-        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-        model.rotation.x = 0;
-        model.position.z = 25;
-        model.position.y = 1;
-        model.scale.set(0.7, 0.7, 0.7);
-        scene.add(model);
-        console.log('Model loaded successfully:', modelPath);
-    }, 
-    // Progress callback
-    function(xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-    // Error callback
-    function (error) {
-        console.error('Error loading model:', error);
-        console.error('URL:', modelPath);
-        console.error('Model directory:', modelDir);
-    });
+if (model) {
+    scene.remove(model);
 }
-
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 0;
+    model.scale.set(0.7, 0.7, 0.7);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
+}
 function loadSmall(modelPath) {
-    if (model) {
-        scene.remove(model);
-    }
-    
-    // Check if the model is a GLB file
-    if (modelPath.endsWith('.glb')) {
-        loadGLBModel(modelPath);
-        return;
-    }
-    
-    // Extract the directory path from the model path
-    const modelDir = modelPath.substring(0, modelPath.lastIndexOf('/'));
-    
-    loader.load(modelPath, function (gltf) {
-        model = gltf.scene;
-        model.rotation.y = Math.PI / 1;  // 90 degrees yaw
-        model.rotation.x = 0;
-        model.position.z = 25;
-        model.position.y = 1;
-        model.scale.set(0.004, 0.004, 0.004);
-        scene.add(model);
-        console.log('Model loaded successfully:', modelPath);
-    }, 
-    // Progress callback
-    function(xhr) {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-    },
-    // Error callback
-    function (error) {
-        console.error('Error loading model:', error);
-        console.error('URL:', modelPath);
-        console.error('Model directory:', modelDir);
-    });
+if (model) {
+    scene.remove(model);
+}
+loader.load(modelPath, function (gltf) {
+    model = gltf.scene;
+    model.rotation.y = Math.PI / 1;  // 90 degrees yaw
+    model.rotation.x = 0;
+    model.position.z = 25;
+    model.position.y = 0;
+    model.scale.set(0.004, 0.004, 0.004);
+    scene.add(model);
+}, undefined, function (error) {
+    console.error(error);
+});
 }
 });
+
+
+
 
 camera.position.set(0, 3, 28); // Initial camera position
 
@@ -451,33 +307,40 @@ function handleThrottle(event) {
         throttle = 0; // Set throttle to 0%
     }
 }
-const gravity = -0.01
+
 function updateModelRotation() {
     if (model && throttle>0) {
         if (keyState['ArrowLeft']) {
+            
+            model.rotation.y += controlsSpeed; // Yaw right
             model.rotation.z -= controlsSpeed; // Roll left
+            
         }
         if (keyState['ArrowRight']) {
+            
+            model.rotation.y -= controlsSpeed; // Yaw left
             model.rotation.z += controlsSpeed; // Roll right
+            
         }
         if (keyState['ArrowUp']) {
+            
             model.rotation.x -= controlsSpeed; // Pitch up
+            
         }
         if (keyState['ArrowDown']) {
+            
             model.rotation.x += controlsSpeed; // Pitch down
+            
         }
         if (keyState['Comma']) {
+
             model.rotation.y += controlsSpeed; // Yaw left
         }
         if (keyState['Period']) {
             model.rotation.y -= controlsSpeed; // Yaw right
         }
-        if(model){
-            model.position.y +=gravity;
-            model.position.y = Math.max(model.position.y, 0);
-        }
         // Apply throttle to move the model forward along the z-axis
-        model.translateZ(throttle * 0.0035); // Move the model forward
+        model.translateZ(throttle * 0.003); // Move the model forward
     }
 }
 let isMouseDown = false;
@@ -508,32 +371,28 @@ controls.target.copy(model.position);
 let hasCrashed = false; // Flag to track if the crash alert has been shown
 
 function animate() {
-    requestAnimationFrame(animate);
+requestAnimationFrame(animate);
 
-    if (model) {
-        if (!isWalking) {
-            updateModelRotation(); // Update model rotation based on key presses
+updateModelRotation(); // Update model rotation based on key presses
 
-            if (!isMouseDown) {
-                updateCameraPosition(); // Update camera focus and position relative to the model
-            }
-        }
-    }
-
-    controls.update(); // Update controls
-
-    renderer.render(scene, camera);
-
-    // Check if the model has crashed
-    /*
-    if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
-        hasCrashed = true; // Set the crash flag to true
-        document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
-    }
-    */
-    // Debugging logs
-    if (model) {
-        console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
-    }
+if (!isMouseDown) {
+updateCameraPosition(); // Update camera focus and position relative to the model
 }
+
+controls.update(); // Update controls
+
+renderer.render(scene, camera);
+
+// Check if the model has crashed
+if (model.position.y < 0 && model.position.z < -30 && !hasCrashed) {
+hasCrashed = true; // Set the crash flag to true
+//document.getElementById('crashMessage').style.display = 'block'; // Show the crash alert
+}
+if(model.position.y<=0) {
+    model.position.y=0;
+}
+// Debugging logs
+console.log(`Model position: y=${model.position.y}, z=${model.position.z}`);
+}
+
 animate();
