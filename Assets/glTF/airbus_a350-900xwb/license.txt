@@ -1,0 +1,11 @@
+Model Information:
+* title:	Airbus +A350-900XWB
+* source:	https://sketchfab.com/3d-models/airbus-a350-900xwb-6fa01964177646d4943143c07047b933
+* author:	CloudHub (https://sketchfab.com/cloudhub)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Airbus +A350-900XWB" (https://sketchfab.com/3d-models/airbus-a350-900xwb-6fa01964177646d4943143c07047b933) by CloudHub (https://sketchfab.com/cloudhub) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

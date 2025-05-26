@@ -1,0 +1,11 @@
+Model Information:
+* title:	A320neo
+* source:	https://sketchfab.com/3d-models/a320neo-b14863d4091e41e6abe25832a0af3b00
+* author:	pranav27 (https://sketchfab.com/pranav27)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "A320neo" (https://sketchfab.com/3d-models/a320neo-b14863d4091e41e6abe25832a0af3b00) by pranav27 (https://sketchfab.com/pranav27) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
